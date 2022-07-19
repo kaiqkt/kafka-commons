@@ -26,12 +26,23 @@ dependencies {
 
 }
 
+tasks.jar {
+    enabled = true
+}
+
+java {
+    withSourcesJar()
+}
+
 tasks.test {
     useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
+    sourceCompatibility = JavaVersion.VERSION_1_8.name
+
     kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "1.8"
     }
 }
@@ -52,14 +63,11 @@ publishing {
             }
         }
     }
-    publications { publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.augenda.commons"
-            artifactId = "kafka-commons"
-            version = "1.0.4"
-
-            from(components["java"])
+    publications {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components["java"])
+            }
         }
-    }
     }
 }
