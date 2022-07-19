@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.augenda.commons"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -26,21 +26,13 @@ dependencies {
 
 }
 
-tasks.jar {
-    enabled = true
-}
-
 tasks.test {
     useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
-    sourceCompatibility = JavaVersion.VERSION_11.name
-    targetCompatibility = JavaVersion.VERSION_11.name
-
     kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
 }
 
@@ -64,7 +56,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.augenda.commons"
             artifactId = "kafka-commons"
-            version = "1.0.2"
+            version = "1.0.3"
 
             from(components["java"])
         }
