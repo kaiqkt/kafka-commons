@@ -35,12 +35,12 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    sourceCompatibility = JavaVersion.VERSION_1_8.name
-    targetCompatibility = JavaVersion.VERSION_1_8.name
+    sourceCompatibility = JavaVersion.VERSION_11.name
+    targetCompatibility = JavaVersion.VERSION_11.name
 
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
