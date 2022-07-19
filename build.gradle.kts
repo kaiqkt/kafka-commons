@@ -14,21 +14,21 @@ repositories {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.3")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
+    compileOnly("com.fasterxml.jackson.core:jackson-annotations:2.13.3")
+    compileOnly("com.fasterxml.jackson.core:jackson-databind:2.13.3")
 
-    implementation("org.apache.kafka:kafka-clients:3.1.0")
+    compileOnly("org.apache.kafka:kafka-clients:3.1.0")
 
-    implementation("org.slf4j:slf4j-api:1.7.36")
-    implementation("org.slf4j:slf4j-simple:1.7.36")
+    compileOnly("org.slf4j:slf4j-api:1.7.36")
+    compileOnly("org.slf4j:slf4j-simple:1.7.36")
 
-    implementation ("io.azam.ulidj:ulidj:1.0.1")
+    compileOnly("io.azam.ulidj:ulidj:1.0.1")
 
-    testImplementation(kotlin("test"))
 }
 
 tasks.jar {
     enabled = true
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
 
 tasks.test {
