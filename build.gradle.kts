@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.augenda.commons"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -65,7 +65,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.augenda.commons"
             artifactId = "kafka-commons"
-            version = "1.0.1"
+            version = "1.0.2"
 
             from(components["java"])
         }
