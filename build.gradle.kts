@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.7.10"
     id("maven-publish")
     id("io.gitlab.arturbosch.detekt") version "1.19.0"
 }
 
 group = "com.augenda.commons"
-version = "1.0.1"
+version = "1.0.2"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
