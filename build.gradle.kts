@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.6.21"
     id("maven-publish")
     id("io.gitlab.arturbosch.detekt") version "1.19.0"
 }
 
-group = "com.augenda"
-version = "1.0.0"
+group = "com.augenda.commons"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -36,7 +36,13 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    sourceCompatibility = JavaVersion.VERSION_1_8.name
+    targetCompatibility = JavaVersion.VERSION_1_8.name
+
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "1.8"
+    }
 }
 
 detekt {
@@ -48,7 +54,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/OWNER/REPOSITORY")
+            url = uri("https://maven.pkg.github.com/kaiqkt/kafka-commons")
             credentials {
                 username = project.findProperty("gpr.user") as String?
                 password = project.findProperty("gpr.key") as String?
@@ -57,9 +63,9 @@ publishing {
     }
     publications { publications {
         create<MavenPublication>("maven") {
-            groupId = "com.augenda"
+            groupId = "com.augenda.commons"
             artifactId = "kafka-commons"
-            version = "1.0.0"
+            version = "1.0.1"
 
             from(components["java"])
         }
