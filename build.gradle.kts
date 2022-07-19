@@ -28,7 +28,6 @@ dependencies {
 
 tasks.jar {
     enabled = true
-    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
 
 tasks.test {
