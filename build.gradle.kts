@@ -7,7 +7,8 @@ plugins {
 }
 
 group = "com.augenda.commons"
-version = "1.0.4"
+version = "1.0.1"
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -39,8 +40,6 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    sourceCompatibility = JavaVersion.VERSION_1_8.name
-
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "1.8"
